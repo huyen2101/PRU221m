@@ -5,27 +5,21 @@ using UnityEngine;
 public class BulletLight : MonoBehaviour
 {
     private Transform target;
-    public GameObject Circle;
-    public GameObject CircleUp;
     public float speed = 0.0001f;
-    public float dame = 0.1f;
-    public bool isBurn = false;
-    public float bonusDamage = 0f;
-    public int burnStacks = 3;
-    public void Seek(Transform _target)
+
+
+    public void Seek (Transform _target)
     {
         target = _target;
-
     }
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (target == null)
         {
             Destroy(gameObject);
@@ -37,7 +31,6 @@ public class BulletLight : MonoBehaviour
 
         if (dir.magnitude <= distanceThisFrame)
         {
-            Debug.Log("===== targer info:" + target);
             HitTarget();
             return;
         }
@@ -47,37 +40,21 @@ public class BulletLight : MonoBehaviour
 
     void HitTarget()
     {
-        Path e = target.GetComponent<Path>();
-        Debug.Log("Path: " + e);
-        Debug.Log("Dame: " + dame);
-        Debug.Log("Health: " + e.health);
 
-        e.health -= dame;
+        Debug.Log("we hit");
+        Destroy(gameObject);
+  /*      GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+        Destroy(effectIns, 5f);
 
-        //bonusDamage = dame / 5f;
-        if (e.health <= 0)
+        if (explosionRadius > 0f)
         {
-            e.HealthBar.fillAmount = 0;
+            Explode();
         }
         else
         {
-            e.HealthBar.fillAmount = e.health;
+            Damage(target);
         }
-        Debug.Log("we hit");
-        Destroy(gameObject);
 
-        /*      GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-              Destroy(effectIns, 5f);
-
-              if (explosionRadius > 0f)
-              {
-                  Explode();
-              }
-              else
-              {
-                  Damage(target);
-              }
-
-              Destroy(gameObject);*/
+        Destroy(gameObject);*/
     }
 }
