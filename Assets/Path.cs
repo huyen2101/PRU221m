@@ -78,4 +78,13 @@ public class Path : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "RedPortal")
+        {
+            Destroy(this.gameObject);
+            GameManager.Instance.Lives--;
+        }
+    }
 }
