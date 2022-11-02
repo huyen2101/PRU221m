@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Monster
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Ground
+  - SpawnPoint
   - 
   - 
   - 
@@ -49,4 +50,16 @@ TagManager:
     locked: 0
   - name: Layer 3
     uniqueID: 4189426099
+    locked: 0
+  - name: Ground
+    uniqueID: 469970081
+    locked: 0
+  - name: Tru
+    uniqueID: 1786678485
+    locked: 0
+  - name: Towers
+    uniqueID: 2811085325
+    locked: 0
+  - name: UI
+    uniqueID: 407299203
     locked: 0
