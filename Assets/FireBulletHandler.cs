@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletLight : MonoBehaviour
+public class FireBulletHandler : MonoBehaviour
 {
     private Transform target;
     public GameObject Circle;
@@ -51,8 +52,10 @@ public class BulletLight : MonoBehaviour
         Debug.Log("Path: " + e);
         Debug.Log("Dame: " + dame);
         Debug.Log("Health: " + e.health);
-
-        e.health -= dame;
+        //e.isBurn = true;
+        //e.isBeingAtk = true;
+        //e.burnDame = dame;
+        //e.health -= dame;
 
         //bonusDamage = dame / 5f;
         if (e.health <= 0)
@@ -63,6 +66,7 @@ public class BulletLight : MonoBehaviour
         {
             e.HealthBar.fillAmount = e.health;
         }
+        e.applyBurn(4);
         Debug.Log("we hit");
         Destroy(gameObject);
 
