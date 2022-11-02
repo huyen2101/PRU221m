@@ -265,6 +265,8 @@ GameObject:
   - component: {fileID: 1926753886164115701}
   - component: {fileID: 1926753886164115700}
   - component: {fileID: 1926753886164115707}
+  - component: {fileID: -2703552083511090955}
+  - component: {fileID: 5133866082805809714}
   m_Layer: 0
   m_Name: CircleUp
   m_TagString: Monster

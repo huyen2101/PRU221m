@@ -162,7 +162,7 @@ public class Path : MonoBehaviour
         if (other.tag == "RedPortal")
         {
             Destroy(this.gameObject);
-
+            GameManager.Instance.Lives--;
         }
     }
 }
