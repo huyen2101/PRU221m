@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletLight : MonoBehaviour
+public class BulletLightFire : MonoBehaviour
 {
     private Transform target;
     public GameObject Circle;
@@ -52,7 +52,7 @@ public class BulletLight : MonoBehaviour
         Debug.Log("Dame: " + dame);
         Debug.Log("Health: " + e.health);
 
-        e.health -= dame;
+        //e.health -= dame;
 
         //bonusDamage = dame / 5f;
         if (e.health <= 0)
@@ -63,7 +63,8 @@ public class BulletLight : MonoBehaviour
         {
             e.HealthBar.fillAmount = e.health;
         }
-        Debug.Log("we hit");
+        e.applyBurn(4);
+        Debug.Log("we hit with fire");
         Destroy(gameObject);
 
         /*      GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
