@@ -112,8 +112,6 @@ GameObject:
   - component: {fileID: 1442916733853205042}
   - component: {fileID: 1442916733853205043}
   - component: {fileID: 1442916733853205052}
-  - component: {fileID: 5532779536513082389}
-  - component: {fileID: 1426655401737124396}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Monster

@@ -13,7 +13,7 @@ public class Path : MonoBehaviour
     //public Queue<EnemyDamageDatas> damageData;
     // Walk speed that can be set in Inspector
     [SerializeField]
-    private float moveSpeed = 2f;
+    public float moveSpeed = 2f;
     //public List<Effect> Effects;
     [Header("Unity Stuff")]
     public Image HealthBar;
@@ -162,7 +162,7 @@ public class Path : MonoBehaviour
         if (other.tag == "RedPortal")
         {
             Destroy(this.gameObject);
-            GameManager.Instance.Lives--;
+
         }
     }
 }
