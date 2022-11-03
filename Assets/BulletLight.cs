@@ -65,6 +65,7 @@ public class BulletLight : MonoBehaviour
         }
         Debug.Log("we hit");
         Destroy(gameObject);
+        e.moveSpeed = 1.5f;
 
         /*      GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
               Destroy(effectIns, 5f);
