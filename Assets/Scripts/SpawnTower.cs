@@ -13,10 +13,27 @@ public class SpawnTower : MonoBehaviour
     public Transform spawnTowerRoot;
     public List<Image> towersUI;
     int spawnID = -1;
-
+    [SerializeField]
+    private int price;
+    [SerializeField]
+    private Text priceTxt;
     public Tilemap spawnTilemap;
+    [SerializeField]
+    public int priceCung;
+    [SerializeField]
+    public int priceLua;
+    [SerializeField]
+    public int priceLight;
 
-     void Update()
+    public int payPrice = 0;
+
+    public TowerButton ActiveTowerButton
+    {
+        get;
+        private set;
+    }
+
+    void Update()
     {
         if(CanSpawn())
             DetectSpawnPoint();
@@ -59,13 +76,24 @@ public class SpawnTower : MonoBehaviour
 
     void SpawnTowers(Vector3 position)
     {
-        GameObject tower = Instantiate(towersPrefabs[spawnID],spawnTowerRoot);
-        tower.transform.position = position;
+        if (GameManager.Instance.Currency >= payPrice)
+        {
+            GameManager.Instance.Currency -= payPrice;
+            GameObject tower = Instantiate(towersPrefabs[spawnID], spawnTowerRoot);
+            tower.transform.position = position;
+        }
         DeselectTower();
     }
     public void SelectTower(int id)
     {
         DeselectTower();
+        switch(id) {
+            case 0 : payPrice = priceCung; break;
+            case 1 : payPrice = priceLua ; break;
+            case 2 : payPrice = priceLight; break;
+
+        }
+       
         spawnID = id;
 
         towersUI[spawnID].color = Color.white;

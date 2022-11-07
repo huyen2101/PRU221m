@@ -83,6 +83,7 @@ public class Path : MonoBehaviour
         if (HealthBar.fillAmount == 0)
         {
             Destroy(this.gameObject);
+            GameManager.Instance.Currency += 1;
         }
         else
         {
@@ -162,6 +163,7 @@ public class Path : MonoBehaviour
         if (other.tag == "RedPortal")
         {
             Destroy(this.gameObject);
+            GameManager.Instance.Lives--;
 
         }
     }
