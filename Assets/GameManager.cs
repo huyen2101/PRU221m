@@ -12,6 +12,7 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         Lives = 10;
+        Currency = 100;
 
     }
 
@@ -19,7 +20,21 @@ public class GameManager : Singleton<GameManager>
     {
 
     }
-
+    private int currency; 
+    [SerializeField]
+    private Text currencyText;
+    public int Currency
+    {
+        get
+        {
+            return currency;
+        }
+        set
+        {
+            currency = value;
+            currencyText.text = value.ToString();
+        }
+    }
     private int lives;
     [SerializeField]
     private Text livesTxt;
