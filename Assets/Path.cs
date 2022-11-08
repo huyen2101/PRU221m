@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -83,6 +84,7 @@ public class Path : MonoBehaviour
         if (HealthBar.fillAmount == 0)
         {
             Destroy(this.gameObject);
+            SpawnMonster.Instance.dieMonster += 1;
             GameManager.Instance.Currency += 1;
         }
         else
@@ -167,4 +169,7 @@ public class Path : MonoBehaviour
 
         }
     }
+
+   
+    
 }

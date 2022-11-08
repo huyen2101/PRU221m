@@ -37,7 +37,7 @@ public class BulletArrow : MonoBehaviour
 
         if (dir.magnitude <= distanceThisFrame)
         {
-            Debug.Log("===== targer info:" + target);
+            //Debug.Log("===== targer info:" + target);
             HitTarget();
             return;
         }
@@ -48,9 +48,9 @@ public class BulletArrow : MonoBehaviour
     void HitTarget()
     {
         Path e = target.GetComponent<Path>();
-        Debug.Log("Path: " + e);
-        Debug.Log("Dame: " + dame);
-        Debug.Log("Health: " + e.health);
+        //Debug.Log("Path: " + e);
+        //Debug.Log("Dame: " + dame);
+        //Debug.Log("Health: " + e.health);
 
         e.health -= dame;
 
@@ -64,7 +64,7 @@ public class BulletArrow : MonoBehaviour
             e.HealthBar.fillAmount = e.health;
         }
   //      e.applyBurn(0);
-        Debug.Log("we hit with fire");
+        //Debug.Log("we hit with fire");
         Destroy(gameObject);
 
         /*      GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);

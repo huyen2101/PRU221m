@@ -7,12 +7,12 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
 
-public class GameManager : Singleton<GameManager>
+public class GameManager : Singleton<GameManager>,IDataPersistence
 {
     void Start()
     {
-        Lives = 10;
-        Currency = 100;
+        Lives = lives;
+        Currency = currency;
 
     }
 
@@ -35,7 +35,7 @@ public class GameManager : Singleton<GameManager>
             currencyText.text = value.ToString();
         }
     }
-    private int lives;
+    public int lives;
     [SerializeField]
     private Text livesTxt;
     private bool gameOver = false;
@@ -82,4 +82,15 @@ public class GameManager : Singleton<GameManager>
         Application.Quit();
     }
 
+    public void LoadData(GameData data)
+    {
+        this.Lives = data.lives;
+        this.currency = data.currency;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.lives = this.lives;
+        data.currency = this.currency;
+    }
 }

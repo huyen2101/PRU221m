@@ -12,7 +12,7 @@ public class TowerArrow : MonoBehaviour
 
     [Header("General")]
 
-    public float range = 15f;
+    public float range = 10f;
 
     [Header("Use Bullets (default)")]
     public GameObject bulletPrefab;
