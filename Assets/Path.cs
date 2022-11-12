@@ -9,7 +9,7 @@ public class Path : MonoBehaviour
 {
     [SerializeField]
     private Transform[] waypoints;
-
+    public GameObject floatingTextPrefab;
     //public Time atkTime = ;
     //public Queue<EnemyDamageDatas> damageData;
     // Walk speed that can be set in Inspector
@@ -64,18 +64,40 @@ public class Path : MonoBehaviour
 
                 burnTickTimers[i]--;
             }
-            Debug.Log("Burning...");
-            Debug.Log("BFhealth:" + health);
+           
             health -= 0.1f;
-            Debug.Log("AFhealth:" + health);
-            Debug.Log("BFHealthBar:" + health);
+            ShowBurningEffectFloatingText(0.1f);
+            
             HealthBar.fillAmount -= 0.1f;
-            Debug.Log("AFHealthBar:" + health);
+           
 
 
             burnTickTimers.RemoveAll(x => x == 0f);
             yield return new WaitForSeconds(0.75f);
         }
+    }
+
+    public void ShowFloatingText(float dame,int id)
+    {
+        var go = Instantiate(floatingTextPrefab,transform.position, Quaternion.identity,transform);
+        switch (id)
+        {
+            case 1: go.GetComponent<TextMesh>().color = new Color(1f, 0f, 0.07450981f, 1f); break;
+            case 2: go.GetComponent<TextMesh>().color = new Color(0.8490566f, 0.509804f, 0.01960784f, 1f); break;
+            case 3: go.GetComponent<TextMesh>().color = new Color(0.3254717f, 0.6901961f, 1f, 1f); break;
+        }
+        go.GetComponent<TextMesh>().text = (dame * 100f).ToString();
+        Debug.Log("SHOWING DAMAGE");
+    }
+    
+    public void ShowBurningEffectFloatingText(float dame)
+    {
+        var go = Instantiate(floatingTextPrefab,transform.position, Quaternion.identity,transform);
+        
+        go.GetComponent<TextMesh>().text = (dame * 100f).ToString();
+        go.GetComponent<TextMesh>().fontSize = 10;
+        go.GetComponent<TextMesh>().color = new Color(1f, 0.09019608f, 0.3568628f, 1f);
+        Debug.Log("SHOWING DAMAGE");
     }
 
     // Update is called once per frame

@@ -64,7 +64,9 @@ public class BulletLightFire : MonoBehaviour
             e.HealthBar.fillAmount = e.health;
         }
         e.applyBurn(4);
-        Debug.Log("we hit with fire");
+        e.ShowFloatingText(dame,1);
+        
+        //Debug.Log("we hit with fire");
         gameObject.SetActive(false);
 
         /*      GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);

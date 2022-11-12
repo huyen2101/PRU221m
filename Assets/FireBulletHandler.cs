@@ -56,7 +56,7 @@ public class FireBulletHandler : MonoBehaviour
         //e.isBeingAtk = true;
         //e.burnDame = dame;
         //e.health -= dame;
-
+        
         //bonusDamage = dame / 5f;
         if (e.health <= 0)
         {

@@ -53,7 +53,7 @@ public class BulletArrow : MonoBehaviour
         //Debug.Log("Health: " + e.health);
 
         e.health -= dame;
-
+        e.ShowFloatingText(dame,2);
         //bonusDamage = dame / 5f;
         if (e.health <= 0)
         {
