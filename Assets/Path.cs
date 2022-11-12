@@ -83,7 +83,8 @@ public class Path : MonoBehaviour
     {
         if (HealthBar.fillAmount == 0)
         {
-            Destroy(this.gameObject);
+            /* Destroy(this.gameObject);*/
+            gameObject.SetActive(false);
             SpawnMonster.Instance.dieMonster += 1;
             GameManager.Instance.Currency += 1;
         }

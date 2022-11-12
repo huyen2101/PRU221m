@@ -63,9 +63,9 @@ public class BulletArrow : MonoBehaviour
         {
             e.HealthBar.fillAmount = e.health;
         }
-  //      e.applyBurn(0);
+        //      e.applyBurn(0);
         //Debug.Log("we hit with fire");
-        Destroy(gameObject);
+        gameObject.SetActive(false);
 
         /*      GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
               Destroy(effectIns, 5f);

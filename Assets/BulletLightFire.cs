@@ -65,7 +65,7 @@ public class BulletLightFire : MonoBehaviour
         }
         e.applyBurn(4);
         Debug.Log("we hit with fire");
-        Destroy(gameObject);
+        gameObject.SetActive(false);
 
         /*      GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
               Destroy(effectIns, 5f);

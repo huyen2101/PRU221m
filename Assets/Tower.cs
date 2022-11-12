@@ -124,7 +124,8 @@ public class Tower : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bulletGO = (GameObject)ObjectPool.Instance.SpawnFromPool("LightBullet", firePoint.position, firePoint.rotation);
+        /*GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);*/
         BulletLight bullet = bulletGO.GetComponent<BulletLight>();
 
         if (bullet != null)

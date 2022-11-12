@@ -124,7 +124,8 @@ public class FireTower : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bulletGO = (GameObject)ObjectPool.Instance.SpawnFromPool("FireBullet", firePoint.position, firePoint.rotation);
+        /*  GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);*/
         BulletLightFire bullet = bulletGO.GetComponent<BulletLightFire>();
 
         if (bullet != null)

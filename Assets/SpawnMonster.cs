@@ -53,8 +53,8 @@ public class SpawnMonster : MonoBehaviour,IDataPersistence
                 
                     count++;
                     Vector2 spawnPosition = new Vector2(0, 0);
-                    Instantiate(Monster, spawnPosition, Quaternion.identity);
-
+                /*Instantiate(Monster, spawnPosition, Quaternion.identity);*/
+                ObjectPool.Instance.SpawnFromPool("Knight", spawnPosition, Quaternion.identity);
                     yield return wait2;
                 
                
@@ -63,7 +63,8 @@ public class SpawnMonster : MonoBehaviour,IDataPersistence
                 
                     count++;
                     Vector2 spawnPosition = new Vector2(0, 0);
-                    Instantiate(Monster2, spawnPosition, Quaternion.identity);
+                /*Instantiate(Monster2, spawnPosition, Quaternion.identity);*/
+                ObjectPool.Instance.SpawnFromPool("KnightUp", spawnPosition, Quaternion.identity);
                     yield return wait2;
                
             }

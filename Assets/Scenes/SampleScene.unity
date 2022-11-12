@@ -33620,6 +33620,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1301970302}
   m_CullTransparentMesh: 1
+--- !u!1 &1338092651
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1338092653}
+  - component: {fileID: 1338092652}
+  m_Layer: 0
+  m_Name: ObjectPooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1338092652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338092651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac3bfb49eef0e34fbb678f29395455d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: Knight
+    prefab: {fileID: 2290882849783689935, guid: e5d3600007eaa824c8fbc78f09f86113,
+      type: 3}
+    size: 100
+  - tag: KnightUp
+    prefab: {fileID: 9093581507875137427, guid: ebdef7dbe62e4c241a5825566af61ea3,
+      type: 3}
+    size: 100
+  - tag: Arrow
+    prefab: {fileID: 2335082415608983940, guid: 21b0d14a409131f4181f6ab96f037731,
+      type: 3}
+    size: 20
+  - tag: LightBullet
+    prefab: {fileID: 5349250876741705933, guid: ef8a657705f5a224094ddc81593f2d6c,
+      type: 3}
+    size: 20
+  - tag: FireBullet
+    prefab: {fileID: 5349250876741705933, guid: 07d3dbf32995b4f42b6a70785815f4da,
+      type: 3}
+    size: 20
+--- !u!4 &1338092653
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338092651}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1378.0366, y: 637.2884, z: -2.662605}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1409457354
 PrefabInstance:
   m_ObjectHideFlags: 0
