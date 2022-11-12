@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 6586976911290892627}
   - component: {fileID: -2091854901189091585}
   - component: {fileID: 1171933270927637454}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: KnightUp
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -382,6 +382,8 @@ MonoBehaviour:
   - {fileID: 185688466699755803, guid: f789ef45f390bf1438a39a2ed8459c13, type: 3}
   - {fileID: 8675189246301470470, guid: 1a4ba073d5c22314da1fbc0cdc974035, type: 3}
   - {fileID: 471153213485778923, guid: df30ccef1c4cf7f47bbb4c4c6907e47e, type: 3}
+  floatingTextPrefab: {fileID: 6196529725632222637, guid: 1314327e803abdb489d30d89ad79e68f,
+    type: 3}
   moveSpeed: 2
   HealthBar: {fileID: 5381772216431604319}
   health: 1

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SpawnMonster : MonoBehaviour,IDataPersistence
 {
-    private static SpawnMonster instance;
+    public static SpawnMonster instance;
 
     public static SpawnMonster Instance
     {
@@ -25,7 +25,7 @@ public class SpawnMonster : MonoBehaviour,IDataPersistence
     public GameObject Monster2;
     private DataPersistenceManager dataPersistenceManager;
     [SerializeField]
-    private int ways = 0;
+    public int ways = 0;
     private int count = 0;
     private int monterInWay = 5;
     [SerializeField]
@@ -37,48 +37,65 @@ public class SpawnMonster : MonoBehaviour,IDataPersistence
     {
         dieMonster = 0;
         dataPersistenceManager = new DataPersistenceManager();
-        
-        StartCoroutine(logEverySecond());
+        try
+        {
+            StartCoroutine(logEverySecond());
+        }
+        catch (Exception ex)
+        {
+            Debug.LogException(ex);
+           
+        }
 
     }
 
     IEnumerator logEverySecond()
     {
-        
-        while (true)
-        {
 
-            if (count <= monterInWay && ways%2==0)
+        
+            while (true)
             {
-                
+
+                if (count <= monterInWay && ways % 2 == 0)
+                {
+
                     count++;
-                    Vector2 spawnPosition = new Vector2(0, 0);
-                /*Instantiate(Monster, spawnPosition, Quaternion.identity);*/
-                ObjectPool.Instance.SpawnFromPool("Knight", spawnPosition, Quaternion.identity);
+                    Vector3 spawnPosition = new Vector3(0, 0);
+                Instantiate(Monster, spawnPosition, Quaternion.identity);
+                //ObjectPool.Instance.SpawnFromPool("Knight", spawnPosition, Quaternion.identity);
                     yield return wait2;
-                
-               
-            }else if (count <= monterInWay && ways % 2 == 1)
-            {
-                
+
+
+                }
+                else if (count <= monterInWay && ways % 2 == 1)
+                {
+
                     count++;
-                    Vector2 spawnPosition = new Vector2(0, 0);
-                /*Instantiate(Monster2, spawnPosition, Quaternion.identity);*/
-                ObjectPool.Instance.SpawnFromPool("KnightUp", spawnPosition, Quaternion.identity);
+                    Vector3 spawnPosition = new Vector3(0, 0);
+                Instantiate(Monster2, spawnPosition, Quaternion.identity);
+                //ObjectPool.Instance.SpawnFromPool("KnightUp", spawnPosition, Quaternion.identity);
                     yield return wait2;
-               
+
+                }
+                else
+                {
+                    if(ways %2 == 0)
+                    {
+                        GameManager.Instance.waysIsChange = true;
+                        SpawnTower.instance.saveGame = true;
+                        DataPersistenceManager.instance.SaveGame();
+                    }
+                    
+                    
+                    dieMonster = 0;
+                    count = 0;
+                    ways++;
+                    Debug.Log(ways);
+                    monterInWay = monterInWay + ways;
+                    yield return wait10;
+                }
             }
-            else 
-            {
-                DataPersistenceManager.instance.SaveGame();
-                dieMonster = 0;
-                count = 0;
-                ways++;
-                Debug.Log(ways);
-                monterInWay = monterInWay+ways;
-                yield return wait10;
-            }
-        }
+        
 
 
 
@@ -90,13 +107,14 @@ public class SpawnMonster : MonoBehaviour,IDataPersistence
     void Update()
     {
         Debug.Log("Ways:" + ways);
-        Debug.Log("NumberOfMonster:" + monterInWay);
-        Debug.Log("DieMonster:" + dieMonster);
+        //Debug.Log("NumberOfMonster:" + monterInWay);
+        //Debug.Log("DieMonster:" + dieMonster);
 
     }
 
     public void LoadData(GameData data)
     {
+        this.count = 0;
         if (data != null)
         {
             if (data.waveEnemy > 0)
@@ -127,10 +145,6 @@ public class SpawnMonster : MonoBehaviour,IDataPersistence
         if(this.ways %2 == 0)
         {
             data.waveEnemy = this.ways;
-        }
-        else if(this.ways > 0)
-        {
-            data.waveEnemy = this.ways - 1;
         }
         else
         {

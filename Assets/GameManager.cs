@@ -9,6 +9,7 @@ using Unity.VisualScripting;
 
 public class GameManager : Singleton<GameManager>,IDataPersistence
 {
+    public bool waysIsChange = false;
     void Start()
     {
         Lives = lives;
@@ -74,7 +75,9 @@ public class GameManager : Singleton<GameManager>,IDataPersistence
     public void Restart()
     {
         Time.timeScale = 1;
+        DataPersistenceManager.instance.NewGame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 
     public void Quit()
@@ -90,7 +93,11 @@ public class GameManager : Singleton<GameManager>,IDataPersistence
 
     public void SaveData(ref GameData data)
     {
-        data.lives = this.lives;
-        data.currency = this.currency;
+        if (waysIsChange || SpawnMonster.instance.ways % 2 == 0)
+        {
+            data.lives = this.lives;
+            data.currency = this.currency;
+            waysIsChange = false;
+        }
     }
 }

@@ -9,6 +9,8 @@ public class SpawnTower : MonoBehaviour,IDataPersistence
     // Start is called before the first frame update
     [SerializeField]
     private string id;
+    public bool saveGame = false;
+    public static SpawnTower instance { get; private set; }
 
     [ContextMenu("Genarat guid for id")]
     private void GenerateGuid()
@@ -52,6 +54,7 @@ public class SpawnTower : MonoBehaviour,IDataPersistence
     }
     void Start()
     {
+        instance = this;
         Debug.Log("Startttttttttttttttt");
         
     }
@@ -162,15 +165,18 @@ public class SpawnTower : MonoBehaviour,IDataPersistence
 
     public void SaveData(ref GameData data)
     {
-        
-        Debug.Log(this.towerEnums.Count);
-        foreach (TowerEnum t in this.towerEnums)
+        if (saveGame ||SpawnMonster.instance.ways % 2 == 0 )
         {
-            Debug.Log("x: " + t.position.x + " | y: " + t.position.y);
-            Debug.Log("ID: " + t.id);
-        }
-        data.TowerList = this.towerEnums;
+            Debug.Log(this.towerEnums.Count);
+            foreach (TowerEnum t in this.towerEnums)
+            {
+                Debug.Log("x: " + t.position.x + " | y: " + t.position.y);
+                Debug.Log("ID: " + t.id);
+            }
+            data.TowerList = this.towerEnums;
         
-        Debug.Log("Saved Towers.");
+            Debug.Log("Saved Towers.");
+        }
+        
     }
 }

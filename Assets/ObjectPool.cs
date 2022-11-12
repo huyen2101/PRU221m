@@ -29,6 +29,7 @@ public class ObjectPool : MonoBehaviour
     public Dictionary<string, Queue<GameObject>> poolDictionary;
     void Start()
     {
+        Instance = this;
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
         foreach (var pool in pools)
         {
