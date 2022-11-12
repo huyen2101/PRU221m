@@ -64,7 +64,7 @@ public class BulletLight : MonoBehaviour
             e.HealthBar.fillAmount = e.health;
         }
         Debug.Log("we hit");
-        Destroy(gameObject);
+        gameObject.SetActive(false);
         e.moveSpeed = 1.5f;
 
         /*      GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);

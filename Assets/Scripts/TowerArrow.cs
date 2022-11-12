@@ -128,7 +128,8 @@ public class TowerArrow : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bulletGO = (GameObject)ObjectPool.Instance.SpawnFromPool("Arrow", firePoint.position, firePoint.rotation);
+        /*       GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);*/
         BulletArrow bullet = bulletGO.GetComponent<BulletArrow>();
 
         if (bullet != null)
