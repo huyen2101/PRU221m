@@ -69,6 +69,8 @@ public class SpawnMonster : MonoBehaviour,IDataPersistence
             }
             else 
             {
+                DataPersistenceManager.instance.SaveGame();
+                dieMonster = 0;
                 count = 0;
                 ways++;
                 Debug.Log(ways);
@@ -89,28 +91,50 @@ public class SpawnMonster : MonoBehaviour,IDataPersistence
         Debug.Log("Ways:" + ways);
         Debug.Log("NumberOfMonster:" + monterInWay);
         Debug.Log("DieMonster:" + dieMonster);
-        
+
     }
 
     public void LoadData(GameData data)
     {
-        //if(data != null)
-        //{
-        //    if(data.waveEnemy > 0)
-        //    {
+        if (data != null)
+        {
+            if (data.waveEnemy > 0)
+            {
+                Debug.Log("Loading Saved wave: " + data.waveEnemy);
+                this.ways = data.waveEnemy;
+                setMonsterNumber(data.waveEnemy);
+                return;
+            }
+        }
+        this.ways = 1;
+    }
 
-        //        Debug.Log("Loading Saved wave: " + data.waveEnemy);
-        //        this.ways = data.waveEnemy;
-        //        return;
-        //    }
-        //    this.ways = 1;
-        //}
-        //this.ways = 1;
+    public void setMonsterNumber(int ways)
+    {
+        if(ways ==0) return;
+        int monsterNumber = this.monterInWay;
+        for(int i = 1; i<= ways; i++)
+        {
+            monsterNumber += i;
+        }
+        this.monterInWay = monsterNumber;
     }
 
     public void SaveData(ref GameData data)
     {
         Debug.Log("On SaveData ways: "+this.ways);
-        data.waveEnemy = this.ways;
+        if(this.ways %2 == 0)
+        {
+            data.waveEnemy = this.ways;
+        }
+        else if(this.ways > 0)
+        {
+            data.waveEnemy = this.ways - 1;
+        }
+        else
+        {
+            data.waveEnemy = 0;
+        }
+        
     }
 }
