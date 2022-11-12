@@ -11,10 +11,11 @@ public class DataPersistenceManager : MonoBehaviour
     [Header("File Storage Config")]
     [SerializeField] 
     private string fileName;
-    private DataHandler dataHandle;
+    public DataHandler dataHandle;
     private GameData gameData;
     private List<IDataPersistence> dataPersistenceObjects;
     public static DataPersistenceManager instance { get; private set; }
+
 
     private void Start()
     {
@@ -33,7 +34,7 @@ public class DataPersistenceManager : MonoBehaviour
     void OnApplicationQuit()
     {
         
-        SaveGame();
+        //SaveGame();
     }
     
 

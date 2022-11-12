@@ -90,7 +90,7 @@ public class SpawnTower : MonoBehaviour,IDataPersistence
                 Vector2 v = new Vector2();
                 v.x = cellPosCentered.x;
                 v.y = cellPosCentered.y;
-                 testSprite.enabled = true;
+                 //testSprite.enabled = true;
                 Debug.Log("======================================");
                 Debug.Log("Tower: x" + cellPosCentered.x.ToString() + "|y" + cellPosCentered.y.ToString() + "z" + cellPosCentered.z.ToString());
                 Debug.Log("======================================");
